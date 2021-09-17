@@ -1,4 +1,9 @@
 {
+  "ts-node": {
+    "files": true,
+    "require": ["tsconfig-paths/register"],
+    "transpileOnly": true
+  },
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
@@ -6,6 +11,23 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@common/*": [
+        "src/common/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@server/*": [
+        "src/server/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@features/*": [
+        "src/features/*"
+      ]
+    },
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",

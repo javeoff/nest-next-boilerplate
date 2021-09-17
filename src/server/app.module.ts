@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
-import Next from 'Next';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { RenderModule } from 'nest-next';
+
+import { ConfigModule } from '@server/Config/config.module';
+import { AppController } from '@server/app.controller';
+import { CoursesModule } from '@server/Courses/courses.module';
 
 @Module({
-  imports: [RenderModule.forRootAsync(Next({ dev: true }), { viewsDir: null })],
+  imports: [ConfigModule, CoursesModule],
   controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
