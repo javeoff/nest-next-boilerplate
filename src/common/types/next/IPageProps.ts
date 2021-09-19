@@ -6,4 +6,6 @@ export interface IPageProps {
    * Заголовок страницы.
    */
   title?: string;
+
+  style?: string;
 }

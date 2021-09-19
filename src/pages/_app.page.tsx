@@ -1,19 +1,21 @@
-import { AppProps } from 'next/app';
+import Head from 'next/head';
 
-import { EnhancedStore } from '@reduxjs/toolkit';
-
-import { setStates, wrapper, IRootState } from '@common/redux/store';
+import { setStates, wrapper } from '@common/redux/store';
 import { IS_SERVER } from '@common/utils/constants';
 import { IAppContext } from '@common/types/next/IAppContext';
 import { Feature } from '@common/enums/Feature';
 import { IBasePageResponse } from '@server/Common/types/IBasePageResponse';
 import { apiPage } from '@server/Common/api/ApiPage';
+import { INextApp } from '@common/types/next/INextApp';
 
-const App = ({
-  Component,
-  pageProps,
-}: AppProps & { reduxStore: EnhancedStore<IRootState> }): JSX.Element => (
-  <Component {...pageProps} />
+const App: INextApp = ({ Component, pageProps }) => (
+  <>
+    <Head>
+      <title>{pageProps.title}</title>
+      <style>{pageProps.style}</style>
+    </Head>
+    <Component {...pageProps} />
+  </>
 );
 
 App.getInitialProps = wrapper.getInitialAppProps((store) => async (context) => {
@@ -28,6 +30,9 @@ App.getInitialProps = wrapper.getInitialAppProps((store) => async (context) => {
       pageProps: {},
     };
   }
+
+  // eslint-disable-next-line no-console
+  console.log('payloasd', payload);
 
   if ('features' in payload) {
     for (const feature of Object.keys(payload.features || {})) {

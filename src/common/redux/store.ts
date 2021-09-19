@@ -7,6 +7,8 @@ import {
 
 import { createWrapper } from 'next-redux-wrapper';
 
+import { StoreEnhancer } from 'redux';
+
 import { commonSlice } from '@common/duck/slice';
 import { Feature } from '@common/enums/Feature';
 import { coursesPageSlice } from '@pages/courses/duck/slice';
@@ -25,6 +27,7 @@ export type IRootState = StateFromReducersMapObject<typeof reducer>;
 export const initializeStore = (
   preloadedState?: IRootState,
   middlewares: Middleware[] = [],
+  enhancers: StoreEnhancer[] = [],
 ): EnhancedStore<IRootState> =>
   configureStore({
     reducer,
@@ -35,6 +38,7 @@ export const initializeStore = (
         serializableCheck: false,
       }).prepend(...middlewares),
     preloadedState,
+    enhancers,
   });
 
 export const wrapper = createWrapper(() => initializeStore());

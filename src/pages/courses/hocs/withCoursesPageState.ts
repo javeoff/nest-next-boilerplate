@@ -1,17 +1,16 @@
-import { connect, ConnectedProps } from 'react-redux';
+import { ConnectedProps } from 'react-redux';
 
 import { IRootState } from '@common/redux/store';
 import { coursesStateSelector } from '@pages/courses/duck/selectors';
+import { withFeatureState } from '@common/redux/hocs/withFeatureState';
+import { Feature } from '@common/enums/Feature';
 
-const mapStateToProps = (state: IRootState) => ({
-  courses: coursesStateSelector(state),
+export const withCoursesPageState = withFeatureState({
+  feature: Feature.COURSES,
+  mapStateToProps: (state: IRootState) => ({
+    courses: coursesStateSelector(state),
+  }),
+  mapDispatchToProps: {},
 });
-
-const mapDispatchToProps = {};
-
-export const withCoursesPageState = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
 
 export type IWithCoursesPageState = ConnectedProps<typeof withCoursesPageState>;

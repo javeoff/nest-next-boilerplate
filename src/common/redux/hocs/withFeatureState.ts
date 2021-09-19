@@ -4,15 +4,15 @@ import {
   ResolveThunks,
 } from 'react-redux';
 
-import { getFeatureStateSelector } from '@common/redux/selectors/getFeatureStateSelector';
-
-import { IFeatureState } from '@common/redux/types/IFeatureState';
+import { AnyObject } from 'immer/dist/types/types-internal';
 
 import { IRootState } from '@common/redux/store';
+import { getFeatureStateSelector } from '@common/redux/selectors/getFeatureStateSelector';
 import { Feature } from '@common/enums/Feature';
+import { IFeatureState } from '@common/redux/types/IFeatureState';
 
 type IMapStateToProps = (state: IRootState) => Record<string, unknown>;
-type IMapDispatchToProps = Record<string, unknown>;
+type IMapDispatchToProps = AnyObject;
 
 type IWithFeatureState<
   FeatureName extends Feature,
@@ -69,15 +69,11 @@ export const withFeatureState = <
     ...(mapStateToProps ? mapStateToProps(state) : undefined),
   });
 
-  const mapDispatchToProperties = {
-    ...mapDispatchToProps,
-  };
-
   return ((component) =>
     connect(
       mapStateToProperties,
-      mapDispatchToProperties,
+      mapDispatchToProps,
     )(component)) as InferableComponentEnhancer<
-    ReturnType<typeof mapStateToProperties> & typeof mapDispatchToProperties
+    ReturnType<typeof mapStateToProperties> & ResolveThunks<MapDispatchToProps>
   >;
 };

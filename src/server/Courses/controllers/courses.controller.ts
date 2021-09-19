@@ -1,12 +1,9 @@
 import { Controller } from '@nestjs/common';
 
-import { ICourses } from '@server/Courses/types/ICourses';
 import { CourseFetcher } from '@server/Courses/services/CourseFetcher';
 import { ICoursesPageResponse } from '@server/Courses/types/ICoursesPageResponse';
-import { Page } from '@server/Common/decorators/Page';
 import { PageName } from '@common/enums/PageName';
-import { ApiGet } from '@server/Common/decorators/ApiGet';
-import { CoursesRoute } from '@server/Courses/enums/CoursesRoute';
+import { Page } from '@server/Common/decorators/Page';
 
 @Controller()
 export class CoursesController {
@@ -19,15 +16,11 @@ export class CoursesController {
     return {
       page: {
         title: 'Courses page',
+        style: `body {background-color: #eee;}`,
       },
       features: {
         courses,
       },
     };
-  }
-
-  @ApiGet(CoursesRoute.BASE)
-  public get(): ICourses {
-    return this.courseFetcher.getCourses();
   }
 }
