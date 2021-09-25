@@ -116,6 +116,7 @@
         "usePrettierrc": true
       }
     ],
+    "unicorn/prefer-module": "off",
     "prefer-arrow/prefer-arrow-functions": "error",
     "implicit-arrow-linebreak": "off",
     "unicorn/filename-case": [
@@ -124,7 +125,10 @@
         "cases": {
           "camelCase": true,
           "pascalCase": true
-        }
+        },
+        "ignore": [
+          "^S(H|h)"
+        ]
       }
     ],
     "unicorn/no-fn-reference-in-iterator": "off",
