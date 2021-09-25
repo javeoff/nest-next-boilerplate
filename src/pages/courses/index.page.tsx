@@ -6,11 +6,27 @@ import {
   IWithCoursesPageState,
   withCoursesPageState,
 } from '@pages/courses/hocs/withCoursesPageState';
-import { styling } from '@common/utils/style/styling';
-import { H1 } from '@pages/courses/components/H1/H1';
+import { SH2 } from '@pages/courses/styling/SH2';
+import { SH1 } from '@pages/courses/styling/SH1';
 
-const Courses: NextPage<IWithCoursesPageState> = ({ courses }) => {
+const Courses: NextPage<IWithCoursesPageState> = ({
+  courses,
+  createCourse,
+}) => {
   const [isWarning, setIsWarning] = useState<boolean>(false);
+  const [courseName, setCourseName] = useState<string>('');
+  const [imageUrl, setImageUrl] = useState<string>('');
+  const [content, setContent] = useState<string>('');
+
+  const onAddCourseClick = (): void => {
+    const course = {
+      name: courseName,
+      imageUrl,
+      content,
+    };
+
+    void createCourse(course);
+  };
 
   return (
     <>
@@ -28,37 +44,47 @@ const Courses: NextPage<IWithCoursesPageState> = ({ courses }) => {
       >
         Courses 2
       </SH2>
-      <pre>{JSON.stringify(courses)}</pre>
+      <div>
+        {JSON.stringify(courses)}
+        {courses &&
+          courses.map((course) => (
+            <div>
+              <div>
+                <span>name: {course.name}</span>
+                <span>id: {course.id}</span>
+              </div>
+              <img width={20} height={20} src={course.imageUrl} alt={''} />
+              <div>{course.content}</div>
+            </div>
+          ))}
+      </div>
+      <div>
+        <input
+          placeholder={'course name'}
+          type='text'
+          value={courseName}
+          onChange={(e) => setCourseName(e.target.value)}
+        />
+      </div>
+      <div>
+        <input
+          placeholder={'image url'}
+          type='text'
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
+        />
+      </div>
+      <div>
+        <textarea
+          placeholder={'content'}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+      </div>
+
+      <button onClick={onAddCourseClick}>Добавить новый курс</button>
     </>
   );
 };
-
-const SH1 = styling(H1)({
-  isWarning: 'redText',
-})`
-    color: red;
-  
-    .h1text {
-    opacity: 0.5;
-    }
-    
-    .redText {
-      color: orange;
-    }
-  
-    .blueText {
-      color: green;
-    }
-`;
-
-const SH2 = styling(H1)({
-  isWarning: 'blueText',
-})`
-  color: green;
-  
-  .blueText {
-    color: yellow;
-  }
-`;
 
 export default withCoursesPageState(Courses);

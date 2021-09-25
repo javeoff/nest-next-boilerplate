@@ -1,8 +1,19 @@
 import { Injectable } from '@nestjs/common';
 
-import { ICourses } from '@server/Courses/types/ICourses';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+
+import { Course } from '@server/Courses/entities/course.entity';
+import { ICourse } from '@server/Courses/types/ICourse';
 
 @Injectable()
-export abstract class CourseFetcher {
-  public abstract getCourses(): ICourses;
+export class CourseFetcher {
+  public constructor(
+    @InjectRepository(Course)
+    private coursesRepository: Repository<Course>,
+  ) {}
+
+  public async fetch(): Promise<ICourse[]> {
+    return this.coursesRepository.find();
+  }
 }

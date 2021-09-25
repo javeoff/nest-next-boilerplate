@@ -1,18 +1,16 @@
 import { Module } from '@nestjs/common';
 
-import { CourseFetcherMock } from '@server/Courses/__mock__/CourseFetcherMock';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { CourseFetcher } from '@server/Courses/services/CourseFetcher';
 import { CoursesController } from '@server/Courses/controllers/courses.controller';
-import { CoursesApiController } from '@server/Courses/controllers/coursesApi.controller';
+import { Course } from '@server/Courses/entities/course.entity';
+import { CoursePublisher } from '@server/Courses/services/CoursePublisher';
 
 @Module({
-  providers: [
-    {
-      provide: CourseFetcher,
-      useClass: CourseFetcherMock,
-    },
-  ],
-  controllers: [CoursesController, CoursesApiController],
-  exports: [CourseFetcher],
+  imports: [TypeOrmModule.forFeature([Course])],
+  providers: [CourseFetcher, CoursePublisher],
+  controllers: [CoursesController],
+  exports: [TypeOrmModule],
 })
 export class CoursesModule {}

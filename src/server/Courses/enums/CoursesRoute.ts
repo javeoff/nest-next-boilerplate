@@ -1,3 +1,3 @@
 export enum CoursesRoute {
-  BASE = 'courses',
+  CREATE = 'courses/create',
 }

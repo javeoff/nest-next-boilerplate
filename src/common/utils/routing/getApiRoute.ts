@@ -14,7 +14,7 @@ export const getApiRoute = (
   route: string,
   { query, params = {} }: IApiRouteParams = {},
 ): string => {
-  let formattedRoute = `${API_PREFIX}${route}`;
+  let formattedRoute = `${API_PREFIX}/${route}`;
 
   for (const paramKey of Object.keys(params)) {
     formattedRoute = formattedRoute.replace(`:${paramKey}`, params[paramKey]);

@@ -27,5 +27,6 @@ export class ApiResponse<T extends AnyObject = EmptyObject>
     this.code = data.code;
     this.payload = data.payload;
     this.error = data.error;
+    this.message = data.message;
   }
 }

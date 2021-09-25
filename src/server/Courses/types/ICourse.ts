@@ -1,5 +1,5 @@
 export interface ICourse {
-  id: string;
+  id: number;
   name: string;
   imageUrl: string;
   content: string;

@@ -1,5 +1,6 @@
-import { NextPageContext } from 'next';
 import { Store } from 'redux';
+
+import { NextPageContext } from 'next';
 
 import { IRootState } from '@common/redux/store';
 import { IBasePageResponse } from '@server/Common/types/IBasePageResponse';
