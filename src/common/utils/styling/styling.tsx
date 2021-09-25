@@ -1,9 +1,9 @@
 import { FC, PropsWithChildren } from 'react';
 
 import { IS_SERVER } from '@common/utils/constants';
-import { generateCss } from '@common/utils/style/generateCss';
-import { createStylingComponent } from '@common/utils/style/createStylingComponent';
-import { getStylingComponentId } from '@common/utils/style/getStylingComponentsId';
+import { getStylingComponentId } from '@common/utils/styling/getStylingComponentsId';
+import { generateCss } from '@common/utils/styling/generateCss';
+import { createStylingComponent } from '@common/utils/styling/createStylingComponent';
 
 type IStylingProps = PropsWithChildren<{
   [key: string]: unknown;

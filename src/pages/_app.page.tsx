@@ -24,15 +24,12 @@ App.getInitialProps = wrapper.getInitialAppProps((store) => async (context) => {
   let payload: IBasePageResponse;
 
   try {
-    payload = IS_SERVER ? ctx.query : await apiPage.init(ctx.asPath);
+    payload = IS_SERVER ? ctx.query : await apiPage.init(ctx.asPath as string);
   } catch {
     return {
       pageProps: {},
     };
   }
-
-  // eslint-disable-next-line no-console
-  console.log('payloasd', payload);
 
   if ('features' in payload) {
     for (const feature of Object.keys(payload.features || {})) {
