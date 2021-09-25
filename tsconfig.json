@@ -5,12 +5,6 @@
     "transpileOnly": true
   },
   "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
     "paths": {
       "@common/*": [
         "src/common/*"
@@ -28,30 +22,38 @@
         "src/features/*"
       ]
     },
-    "target": "es2017",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true,
-    "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-    "jsx": "preserve",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "strict": false,
-    "noEmit": true,
-    "esModuleInterop": true,
+    "baseUrl": ".",
+    "target": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
+    "declaration": false,
+    "noImplicitAny": false,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "types": [
+      "node",
+      "jest",
+      "@testing-library/jest-dom",
+      "codeceptjs"
+    ],
+    "lib": [
+      "ESNext",
+      "dom",
+      "DOM.Iterable"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "keyofStringsOnly": true,
+    "emitDecoratorMetadata": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "strict": true
   },
   "include": [
     "next-env.d.ts",
