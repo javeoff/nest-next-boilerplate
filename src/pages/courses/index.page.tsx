@@ -1,13 +1,12 @@
 import { NextPage } from 'next';
-
 import { useState } from 'react';
 
 import {
   IWithCoursesPageState,
   withCoursesPageState,
 } from '@pages/courses/hocs/withCoursesPageState';
-import { SH2 } from '@pages/courses/styling/SH2';
-import { SH1 } from '@pages/courses/styling/SH1';
+import { SH1 } from '@pages/courses/styled/SH1';
+import { SH2 } from '@pages/courses/styled/SH2';
 
 const Courses: NextPage<IWithCoursesPageState> = ({
   courses,
@@ -32,14 +31,14 @@ const Courses: NextPage<IWithCoursesPageState> = ({
     <>
       <SH1
         isWarning={isWarning}
-        className={'h1text'}
+        className='h1text'
         onClick={() => setIsWarning(!isWarning)}
       >
         Courses
       </SH1>
       <SH2
         isWarning={isWarning}
-        className={'h2text'}
+        className='h2text'
         onClick={() => setIsWarning(!isWarning)}
       >
         Courses 2
@@ -47,20 +46,20 @@ const Courses: NextPage<IWithCoursesPageState> = ({
       <div>
         {JSON.stringify(courses)}
         {courses &&
-          courses.map((course) => (
-            <div>
+          courses.map((course, idx) => (
+            <div key={idx}>
               <div>
                 <span>name: {course.name}</span>
                 <span>id: {course.id}</span>
               </div>
-              <img width={20} height={20} src={course.imageUrl} alt={''} />
+              <img width={20} height={20} src={course.imageUrl} alt='' />
               <div>{course.content}</div>
             </div>
           ))}
       </div>
       <div>
         <input
-          placeholder={'course name'}
+          placeholder='course name'
           type='text'
           value={courseName}
           onChange={(e) => setCourseName(e.target.value)}
@@ -68,7 +67,7 @@ const Courses: NextPage<IWithCoursesPageState> = ({
       </div>
       <div>
         <input
-          placeholder={'image url'}
+          placeholder='image url'
           type='text'
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
@@ -76,13 +75,15 @@ const Courses: NextPage<IWithCoursesPageState> = ({
       </div>
       <div>
         <textarea
-          placeholder={'content'}
+          placeholder='content'
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
 
-      <button onClick={onAddCourseClick}>Добавить новый курс</button>
+      <button type='submit' onClick={onAddCourseClick}>
+        Добавить новый курс
+      </button>
     </>
   );
 };
