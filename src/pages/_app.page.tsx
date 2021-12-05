@@ -32,6 +32,7 @@ App.getInitialProps = wrapper.getInitialAppProps((store) => async (context) => {
   }
 
   if ('features' in payload) {
+    // eslint-disable-next-line no-restricted-syntax
     for (const feature of Object.keys(payload.features || {})) {
       const setState = setStates[feature as Feature];
 

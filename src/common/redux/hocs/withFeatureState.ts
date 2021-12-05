@@ -3,7 +3,6 @@ import {
   InferableComponentEnhancer,
   ResolveThunks,
 } from 'react-redux';
-
 import { AnyObject } from 'immer/dist/types/types-internal';
 
 import { IRootState } from '@common/redux/store';

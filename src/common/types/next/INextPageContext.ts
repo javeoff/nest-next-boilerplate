@@ -1,5 +1,4 @@
 import { Store } from 'redux';
-
 import { NextPageContext } from 'next';
 
 import { IRootState } from '@common/redux/store';

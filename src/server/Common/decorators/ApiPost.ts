@@ -4,7 +4,7 @@ import { FormatApiResponse } from '@common/interceptors/FormatApiResponse';
 
 export const ApiPost = (route = '', hasAuthGuard = true): MethodDecorator => {
   const decorators = [
-    Post('/api/' + route),
+    Post(`/api/${route}`),
     UseInterceptors(FormatApiResponse),
   ];
 

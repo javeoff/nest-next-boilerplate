@@ -5,7 +5,6 @@ import Axios, {
   AxiosPromise,
   AxiosRequestConfig,
 } from 'axios';
-
 import { HttpStatus } from '@nestjs/common';
 
 import { transformResponse } from '@server/Common/api/utils/transformResponse';

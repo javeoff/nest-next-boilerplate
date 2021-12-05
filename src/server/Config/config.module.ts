@@ -1,9 +1,7 @@
 import { RenderModule } from 'nest-next';
 import Next from 'next';
 import { Module } from '@nestjs/common';
-
 import { TypeOrmModule } from '@nestjs/typeorm';
-
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 import { ConfigService } from '@server/Config/services/config.service';

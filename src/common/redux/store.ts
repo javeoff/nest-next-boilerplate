@@ -4,13 +4,12 @@ import {
   Middleware,
   StateFromReducersMapObject,
 } from '@reduxjs/toolkit';
-
 import { createWrapper } from 'next-redux-wrapper';
-
 import { StoreEnhancer } from 'redux';
 
 import { commonSlice } from '@common/duck/slice';
 import { Feature } from '@common/enums/Feature';
+// TODO: HydrateAction ругается линтер
 import { coursesPageSlice } from '@pages/courses/duck/slice';
 
 const reducer = {

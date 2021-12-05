@@ -24,7 +24,7 @@ export class CoursesController {
     return {
       page: {
         title: 'Courses page',
-        style: `body {background-color: #eee;}`,
+        style: 'body {background-color: #eee;}',
       },
       features: {
         courses: {

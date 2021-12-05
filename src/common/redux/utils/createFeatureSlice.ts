@@ -7,10 +7,10 @@ import {
   Slice,
 } from '@reduxjs/toolkit';
 import { SliceCaseReducers } from '@reduxjs/toolkit/src/createSlice';
-
 import { WritableDraft } from 'immer/dist/types/types-external';
 
 import { IBaseFeatureState } from '@common/redux/types/IBaseFeatureState';
+// eslint-disable-next-line import/no-cycle
 import { hydrateAction } from '@common/redux/actions/hydrateAction';
 import { Feature } from '@common/enums/Feature';
 
